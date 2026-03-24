@@ -1,42 +1,71 @@
+# === 1. 파이썬 캐시 및 가상환경 ===
 __pycache__/
 *.pyc
-app.log
-temp_storage/
-venv/
-
-# 민감한 설정 파일 (API 키, 비번 등)
-.env
-config.json
-
-# 파이썬 캐시 및 가상환경
-__pycache__/
-*.pyc
+*.pyo
+*.pyd
+.Python
+env/
 venv/
 .venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
 
-# 임시 저장소 및 로그 (변환된 파일들)
+# === 2. 로그 파일 (강력 차단 🎖️) ===
+# 모든 위치의 .log 파일 차단
+*.log
+# 로그 관련 폴더 전체 차단
+log/
+logs/
+# 시스템 및 실행 로그
+nohup.out
+*.out
+*.err
+
+# === 3. 민감한 설정 파일 (보안 🎖️) ===
+.env
+.env.*
+config.json
+*.pem
+*.key
+*.pub
+secrets.yaml
+# 테라폼/앤서블 실행 시 생성될 수 있는 민감 파일
+*.tfstate
+*.tfstate.backup
+
+# === 4. 저장소 및 변환 파일 (Data/Storage) ===
+# 변환 서비스용 임시/결과물 폴더
+storage/
 temp_storage/
+data/
+# 문서 및 이미지 파일 (원본/결환물 유입 방지)
 *.pdf
 *.hwp
 *.docx
+*.doc
 *.txt
 *.png
 *.jpg
 *.jpeg
-storage/
+*.gif
 
-# OS 관련 파일
+# === 5. IDE 및 OS 관련 ===
+.vscode/
+.idea/
+*.swp
+*.swo
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# 모든 .log 확장자 파일 차단
-*.log
-
-# 특정 로그 폴더 차단
-logs/
-log/
-
-# 파이썬 실행 로그 및 시스템 로그
+# === 6. 주피터 노트북 및 기타 ===
+.ipynb_checkpoints
 .pytest_cache/
-.ipynb_checkpoints/
-nohup.out
