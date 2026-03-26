@@ -10,3 +10,4 @@ slowapi
 olefile
 python-docx
 reportlab  # 텍스트 PDF 변환을 위해 추가 🎖️
+emoji
