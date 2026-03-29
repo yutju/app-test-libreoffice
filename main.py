@@ -13,7 +13,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles  # 👈 정적 파일 처리를 위해 추가
 from starlette.responses import Response
 
-# 📊 모니터링 라이브러리
+#  모니터링 라이브러리
 from prometheus_fastapi_instrumentator import Instrumentator
 from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
 
@@ -37,14 +37,14 @@ s3_client = boto3.client(
 # --- FastAPI 앱 초기화 ---
 app = FastAPI(title="SixSense Doc Converter")
 
-# 📂 [인프라 포인트] 정적 파일 경로 등록
+#  [인프라 포인트] 정적 파일 경로 등록
 # 서버의 ~/app/static 폴더를 웹의 /static 경로로 연결하여 로고 등을 서빙합니다.
 if not os.path.exists("static"):
     os.makedirs("static", exist_ok=True)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# 🚀 Prometheus 모니터링 계측기 설정 (Middleware 등록)
+#  Prometheus 모니터링 계측기 설정 (Middleware 등록)
 Instrumentator().instrument(app).expose(app)
 
 # Rate Limiter 설정 (무분별한 요청 방지)

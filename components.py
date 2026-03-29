@@ -1,6 +1,6 @@
 # components.py
 
-# 🕵️ SixSense의 기술적 깊이와 통합 브랜딩을 강조한 ABOUT 섹션
+#  SixSense의 기술적 깊이와 통합 브랜딩을 강조한 ABOUT 섹션
 ABOUT_SECTION = """
         <section id="about" class="bg-white p-16 rounded-3xl shadow-xl border border-gray-100">
             <div class="text-center mb-16">
@@ -67,7 +67,7 @@ ABOUT_SECTION = """
         </section>
 """
 
-# API 섹션 (최신 버전 유지 🎖️)
+# API 섹션 (최신 버전 유지 )
 API_SECTION = """
         <section id="api" class="space-y-12">
             <div class="text-center">
