@@ -1,71 +1,76 @@
-# === 1. 파이썬 캐시 및 가상환경 ===
+# ==========================================
+# SixSense Doc-Converter Project .gitignore
+# ==========================================
+
+# --- 1. 파이썬 빌드 및 가상환경 ---
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 .Python
 env/
 venv/
 .venv/
 pip-log.txt
 pip-delete-this-directory.txt
-.tox/
-.coverage
 .cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
 .pytest_cache/
+.coverage
+htmlcov/
 
-# === 2. 로그 파일 (강력 차단 🎖️) ===
-# 모든 위치의 .log 파일 차단
+# --- 2. 로그 및 임시 파일 (강력 차단 ) ---
 *.log
-# 로그 관련 폴더 전체 차단
-log/
 logs/
-# 시스템 및 실행 로그
+log/
 nohup.out
 *.out
 *.err
+temp_storage/    # 서비스 운영 중 생성되는 임시 파일 폴더
+storage/
+data/
 
-# === 3. 민감한 설정 파일 (보안 🎖️) ===
+# --- 3. 보안 및 민감 정보 (절대 업로드 금지) ---
 .env
 .env.*
-config.json
 *.pem
 *.key
 *.pub
 secrets.yaml
-# 테라폼/앤서블 실행 시 생성될 수 있는 민감 파일
+config.json
+
+# --- 4. 인프라 및 도커 관련 ---
+# 테라폼 상태 파일 (로컬 협업 시 주의)
 *.tfstate
 *.tfstate.backup
+.terraform/
 
-# === 4. 저장소 및 변환 파일 (Data/Storage) ===
-# 변환 서비스용 임시/결과물 폴더
-storage/
-temp_storage/
-data/
-# 문서 및 이미지 파일 (원본/결환물 유입 방지)
+# 도커 관련
+.dockerignore
+
+# --- 5. OS 및 IDE 설정 ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- 6. 정적 자원 및 문서 (정밀 제어 ) ---
+# 모든 문서/이미지 파일을 기본적으로 차단하여 실수 방지
 *.pdf
 *.hwp
 *.docx
 *.doc
-
 *.png
 *.jpg
 *.jpeg
 *.gif
 
-# === 5. IDE 및 OS 관련 ===
-.vscode/
-.idea/
-*.swp
-*.swo
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# === 6. 주피터 노트북 및 기타 ===
-.ipynb_checkpoints
-.pytest_cache/
+# [핵심] 서비스 운영에 필수적인 정적 파일은 예외적으로 허용 
+!static/
+!static/*.png
+!static/*.jpg
+!static/*.jpeg
+!static/*.svg
+!static/*.ico
+!.gitkeep
