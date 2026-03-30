@@ -1,24 +1,25 @@
+
 #!/bin/bash
 
-# 1. 기존 컨테이너 및 이미지 정리 (더 확실하게!) 🎖️
-echo "♻️  Cleaning up old containers and images..."
+# 1. 기존 컨테이너 정리
+echo " Cleaning up old container..."
 sudo docker stop sixsense-final-test 2>/dev/null
 sudo docker rm sixsense-final-test 2>/dev/null
-# 기존 이미지를 삭제해서 빌드를 강제합니다. 🕵️
-sudo docker rmi doc-converter:latest 2>/dev/null
 
-# 2. 도커 이미지 빌드 (캐시 무시 옵션 필수!) 🚀
-echo "📦 Building Docker image WITHOUT CACHE..."
+# 2. 도커 이미지 빌드 (최신 코드 반영을 위해 캐시 무시)
+echo "Building Docker image WITHOUT CACHE..."
 sudo docker build --no-cache -t doc-converter:latest .
 
-# 3. 환경 변수 파일(.env)을 로드하여 컨테이너 실행
-echo "🚀 Starting container with S3 credentials..."
+# 3. IAM Role 기반 컨테이너 실행
+# 버킷 이름만 직접 환경변수로 넘겨줍니다.
+echo " Starting container with IAM Role (No Keys needed)..."
 sudo docker run -d \
   -p 8000:8000 \
-  --env-file .env \
+  -e S3_BUCKET_NAME="sixsense-pdf-storage-8aourm" \
   --name sixsense-final-test \
   doc-converter:latest
 
 # 4. 로그 실시간 확인
-echo "📋 Showing real-time logs..."
+echo "Showing real-time logs..."
+echo "'Found credentials in environment variables' 메시지가 없는지 확인하세요!"
 sudo docker logs -f sixsense-final-test
