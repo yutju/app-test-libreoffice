@@ -1,3 +1,4 @@
+
 # templates.py
 from components import ABOUT_SECTION, API_SECTION
 
@@ -451,3 +452,4 @@ HTML_FOOTER = """
 
 # 최종 조립 (누락 없음)
 HTML_CONTENT = HTML_HEADER + ABOUT_SECTION + API_SECTION + HTML_FOOTER
+
